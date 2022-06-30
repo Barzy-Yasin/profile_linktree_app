@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # first_inclass_assignment
 
 A new Flutter project.
@@ -14,3 +15,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# first_inclass_assignment
+>>>>>>> d224f4ac20315eb150f362aa307af094f2109117
