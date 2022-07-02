@@ -1,7 +1,8 @@
-import 'package:first_inclass_assignment/src/screens/profile.dart';
+import 'package:first_inclass_assignment/myapp.dart';
 import 'package:flutter/material.dart';
 
+
 void main() {
-  runApp( const Profile());
+  runApp( const MyApp());
 }
 
