@@ -59,142 +59,280 @@ class _ChatState extends State<Chat> {
               ),
 
               //  box_messages-column
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.grey.shade200,
-                      border: Border.all(
-                        color: Colors.green.shade200,
-                        width: 2.0,
+              SizedBox(
+                width: double.infinity,
+                height: 398,
+                child: ListView(
+                  
+                  scrollDirection: Axis.vertical,
+                  // mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.grey.shade200,
+                        border: Border.all(
+                          color: Colors.green.shade200,
+                          width: 2.0,
+                        ),
                       ),
-                    ),
-                    width: double.infinity,
-                    height: 100,
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 30.0, vertical: 8.0),
-                    alignment: Alignment.center,
-                    //  inside_box_messages-column
-                    child: Column(
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          margin:
-                              const EdgeInsets.fromLTRB(15.0, 12.0, 15.0, 8.0),
-                          child: Text(
-                            'name'.toUpperCase(),
-                            style: const TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500,
+                      width: double.infinity,
+                      height: 100,
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 30.0, vertical: 8.0),
+                      alignment: Alignment.center,
+                      //  inside_box_messages-column
+                      child: Column(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            margin:
+                                const EdgeInsets.fromLTRB(15.0, 12.0, 15.0, 8.0),
+                            child: Text(
+                              'name'.toUpperCase(),
+                              style: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          margin:
-                              const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 8.0),
-                          child: Text(
-                            'Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.'
-                                .toUpperCase(),
-                            style: const TextStyle(fontSize: 11, height: 1.4),
-                            textAlign: TextAlign.start,
-                            maxLines: 3,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.grey.shade200,
-                      border: Border.all(
-                        color: Colors.green.shade200,
-                        width: 2.0,
-                      ),
-                    ),
-                    width: double.infinity,
-                    height: 100,
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 30.0, vertical: 8.0),
-                    alignment: Alignment.center,
-                    //  inside_box_messages-column
-                    child: Column(
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          margin:
-                              const EdgeInsets.fromLTRB(15.0, 12.0, 15.0, 8.0),
-                          child: Text(
-                            'name'.toUpperCase(),
-                            style: const TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500,
+                          Container(
+                            width: double.infinity,
+                            margin:
+                                const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 8.0),
+                            child: Text(
+                              'Lorem ipsum is a placeholder text coggggggggggggggggggggggggggggggggggmmonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.'
+                                  .toUpperCase(),
+                              style: const TextStyle(fontSize: 11, height: 1.4),
+                              textAlign: TextAlign.start,
+                              maxLines: 3,
                             ),
                           ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          margin:
-                              const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 8.0),
-                          child: Text(
-                            'Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.'
-                                .toUpperCase(),
-                            style: const TextStyle(fontSize: 11, height: 1.4),
-                            textAlign: TextAlign.start,
-                            maxLines: 3,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.grey.shade200,
-                      border: Border.all(
-                        color: Colors.green.shade200,
-                        width: 2.0,
+                        ],
                       ),
                     ),
-                    width: double.infinity,
-                    height: 100,
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 30.0, vertical: 8.0),
-                    alignment: Alignment.center,
-                    //  inside_box_messages-column
-                    child: Column(
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          margin:
-                              const EdgeInsets.fromLTRB(15.0, 12.0, 15.0, 8.0),
-                          child: Text(
-                            'name'.toUpperCase(),
-                            style: const TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500,
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.grey.shade200,
+                        border: Border.all(
+                          color: Colors.green.shade200,
+                          width: 2.0,
+                        ),
+                      ),
+                      width: double.infinity,
+                      height: 100,
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 30.0, vertical: 8.0),
+                      alignment: Alignment.center,
+                      //  inside_box_messages-column
+                      child: Column(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            margin:
+                                const EdgeInsets.fromLTRB(15.0, 12.0, 15.0, 8.0),
+                            child: Text(
+                              'name'.toUpperCase(),
+                              style: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          margin:
-                              const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 8.0),
-                          child: Text(
-                            'Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.'
-                                .toUpperCase(),
-                            style: const TextStyle(fontSize: 11, height: 1.4),
-                            textAlign: TextAlign.start,
-                            maxLines: 3,
+                          Container(
+                            width: double.infinity,
+                            margin:
+                                const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 8.0),
+                            child: Text(
+                              'Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.'
+                                  .toUpperCase(),
+                              style: const TextStyle(fontSize: 11, height: 1.4),
+                              textAlign: TextAlign.start,
+                              maxLines: 3,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.grey.shade200,
+                        border: Border.all(
+                          color: Colors.green.shade200,
+                          width: 2.0,
+                        ),
+                      ),
+                      width: double.infinity,
+                      height: 100,
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 30.0, vertical: 8.0),
+                      alignment: Alignment.center,
+                      //  inside_box_messages-column
+                      child: Column(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            margin:
+                                const EdgeInsets.fromLTRB(15.0, 12.0, 15.0, 8.0),
+                            child: Text(
+                              'name'.toUpperCase(),
+                              style: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            margin:
+                                const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 8.0),
+                            child: Text(
+                              'Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.'
+                                  .toUpperCase(),
+                              style: const TextStyle(fontSize: 11, height: 1.4),
+                              textAlign: TextAlign.start,
+                              maxLines: 3,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.grey.shade200,
+                        border: Border.all(
+                          color: Colors.green.shade200,
+                          width: 2.0,
+                        ),
+                      ),
+                      width: double.infinity,
+                      height: 100,
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 30.0, vertical: 8.0),
+                      alignment: Alignment.center,
+                      //  inside_box_messages-column
+                      child: Column(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            margin:
+                                const EdgeInsets.fromLTRB(15.0, 12.0, 15.0, 8.0),
+                            child: Text(
+                              'name'.toUpperCase(),
+                              style: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            margin:
+                                const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 8.0),
+                            child: Text(
+                              'Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.'
+                                  .toUpperCase(),
+                              style: const TextStyle(fontSize: 11, height: 1.4),
+                              textAlign: TextAlign.start,
+                              maxLines: 3,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.grey.shade200,
+                        border: Border.all(
+                          color: Colors.green.shade200,
+                          width: 2.0,
+                        ),
+                      ),
+                      width: double.infinity,
+                      height: 100,
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 30.0, vertical: 8.0),
+                      alignment: Alignment.center,
+                      //  inside_box_messages-column
+                      child: Column(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            margin:
+                                const EdgeInsets.fromLTRB(15.0, 12.0, 15.0, 8.0),
+                            child: Text(
+                              'name'.toUpperCase(),
+                              style: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            margin:
+                                const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 8.0),
+                            child: Text(
+                              'Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.'
+                                  .toUpperCase(),
+                              style: const TextStyle(fontSize: 11, height: 1.4),
+                              textAlign: TextAlign.start,
+                              maxLines: 3,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.grey.shade200,
+                        border: Border.all(
+                          color: Colors.green.shade200,
+                          width: 2.0,
+                        ),
+                      ),
+                      width: double.infinity,
+                      height: 100,
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 30.0, vertical: 8.0),
+                      alignment: Alignment.center,
+                      //  inside_box_messages-column
+                      child: Column(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            margin:
+                                const EdgeInsets.fromLTRB(15.0, 12.0, 15.0, 8.0),
+                            child: Text(
+                              'name'.toUpperCase(),
+                              style: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            margin:
+                                const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 8.0),
+                            child: Text(
+                              'Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.'
+                                  .toUpperCase(),
+                              style: const TextStyle(fontSize: 11, height: 1.4),
+                              textAlign: TextAlign.start,
+                              maxLines: 3,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
