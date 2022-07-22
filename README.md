@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 ### first_inclass_assignment
 
-## Screens
+# Screens
 profile link tree
 chat screen
