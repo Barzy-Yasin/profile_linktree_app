@@ -174,7 +174,7 @@ class OutputContainerWidget extends StatelessWidget {
             margin: const EdgeInsets.fromLTRB(15.0, 12.0, 15.0, 8.0),
             child: Text(
               // 'name'.toUpperCase(),
-              "$index.  " + name.toUpperCase(),
+              "$index.  name.toUpperCase()",
               style: const TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w500,
