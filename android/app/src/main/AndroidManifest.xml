@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.first_inclass_assignment">
+    package="com.example.profile_linktree_app">
    <application
-        android:label="first_inclass_assignment"
+        android:label="profile_linktree_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

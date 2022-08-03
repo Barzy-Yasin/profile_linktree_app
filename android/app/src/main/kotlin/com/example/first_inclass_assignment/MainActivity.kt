@@ -1,4 +1,4 @@
-package com.example.first_inclass_assignment
+package com.example.profile_linktree_app
 
 import io.flutter.embedding.android.FlutterActivity
 

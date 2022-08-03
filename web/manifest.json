@@ -1,6 +1,6 @@
 {
-    "name": "first_inclass_assignment",
-    "short_name": "first_inclass_assignment",
+    "name": "profile_linktree_app",
+    "short_name": "profile_linktree_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

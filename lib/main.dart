@@ -1,4 +1,4 @@
-import 'package:first_inclass_assignment/myapp.dart';
+import 'package:profile_linktree_app/myapp.dart';
 import 'package:flutter/material.dart';
 
 
