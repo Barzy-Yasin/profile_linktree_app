@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:url_launcher/url_launcher_string.dart';
 
 class Chat extends StatelessWidget {
-  const Chat({Key? key}) : super(key: key);
+   Chat({Key? key}) : super(key: key);
+
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   static const Color primaryColor = Colors.teal;
 
