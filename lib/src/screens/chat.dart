@@ -1,13 +1,18 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:url_launcher/url_launcher_string.dart';
 
 class Chat extends StatelessWidget {
-   Chat({Key? key}) : super(key: key);
+  Chat({Key? key}) : super(key: key);
 
   // ignore: unused_field
   final FirebaseFirestore _db = FirebaseFirestore.instance;
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController messageController = TextEditingController();
+  final TextEditingController urlController = TextEditingController();
 
   static const Color primaryColor = Colors.teal;
 
@@ -30,15 +35,33 @@ class Chat extends StatelessWidget {
             children: [
               // body section
               Expanded(
-                child: ListView.builder(
-                  itemCount: 20,
-                  scrollDirection: Axis.vertical,
-                  itemBuilder: (context, index) {
-                    return  OutputContainerWidget(
-                      name: "name",
-                      message: "message",
-                      url: 'https://www.google.com/',
-                      index: "${index+1}",
+                child: FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                  future: getDataOnceUsingFuture(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else if (snapshot.hasError) {
+                      return Text(snapshot.error.toString());
+                    } else if (snapshot.data == null) {
+                      return const Text('snapshottt no data');
+                    }
+                    // return Text(snapshot.data.toString());
+                    // return Text(snapshot.data!.docs.toString()); // returns firestore instances
+                    // return Text(snapshot.data!.docs.length.toString()); // returns number of documents inside the collection
+
+                    // snapshot.data!.docs.map((doc) => print (doc.data()));
+                    // return Text(snapshot.data!.docs.length.toString());
+                    // return Text(snapshot.data.toString());
+                    return ListView.builder(
+                      itemCount: snapshot.data!.docs.length,
+                      itemBuilder: (context, index) {
+                        return OutputContainerWidget(
+                          name: snapshot.data!.docs[index].data()["name"],
+                          message: snapshot.data!.docs[index].data()["message"],
+                          url: snapshot.data!.docs[index].data()["url"],
+                          index: "${index + 1}",
+                        );
+                      },
                     );
                   },
                 ),
@@ -66,9 +89,15 @@ class Chat extends StatelessWidget {
                       margin: const EdgeInsets.symmetric(horizontal: 22.0),
                       child: Column(
                         children: [
-                          const InputContainer(hintText: 'name'),
-                          const InputContainer(hintText: 'message'),
-                          const InputContainer(hintText: 'Url'),
+                          InputContainer(
+                              hintText: '*name',
+                              currentController: nameController),
+                          InputContainer(
+                              hintText: '*message',
+                              currentController: messageController),
+                          InputContainer(
+                              hintText: 'Url',
+                              currentController: urlController),
                           Container(
                             // color: Colors.yellow,
                             height: 40,
@@ -83,7 +112,16 @@ class Chat extends StatelessWidget {
                               ),
                             ),
                             child: TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                print(nameController.value.text);
+                                print(messageController.value.text);
+                                print(urlController.value.text);
+                                addDataToDB(
+                                  name: nameController.value.text,
+                                  message: messageController.value.text,
+                                  url: urlController.value.text,
+                                );
+                              },
                               child: const Text(
                                 'SEND',
                                 style: TextStyle(
@@ -106,15 +144,44 @@ class Chat extends StatelessWidget {
       ),
     );
   }
+
+  Future<DocumentReference> addDataToDB(
+      {required String name,
+      required String message,
+      required String url}) async {
+    // ignore: no_leading_underscores_for_local_identifiers
+    DocumentReference _doc = await _db
+        .collection('profilelinktree')
+        .doc('person')
+        .collection('usersmessages')
+        .add({
+      "name": name,
+      "message": message,
+      "url": url,
+    });
+    // DocumentReference _doc = await _db.collection('something1').doc('2').collection('3').doc('4').collection('fdsa').add({"data": "123212321"});
+    return _doc;
+  }
+
+  // returning all the data inside a collection once
+  Future<QuerySnapshot<Map<String, dynamic>>> getDataOnceUsingFuture() async {
+    return await _db
+        .collection('profilelinktree')
+        .doc('person')
+        .collection('usersmessages')
+        .get();
+  }
 }
 
 class InputContainer extends StatelessWidget {
   const InputContainer({
     Key? key,
     required this.hintText,
+    required this.currentController,
   }) : super(key: key);
 
   final String hintText;
+  final TextEditingController currentController;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -131,7 +198,8 @@ class InputContainer extends StatelessWidget {
       height: 50,
       alignment: Alignment.centerLeft,
       padding: const EdgeInsets.only(left: 15),
-      child: TextField(
+      child: TextFormField(
+        controller: currentController,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: '${hintText.toUpperCase()}:',
@@ -178,7 +246,7 @@ class OutputContainerWidget extends StatelessWidget {
             margin: const EdgeInsets.fromLTRB(15.0, 12.0, 15.0, 8.0),
             child: Text(
               // 'name'.toUpperCase(),
-              "$index.  name.toUpperCase()",
+              "$index.  ${name.toUpperCase()}",
               style: const TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w500,
@@ -221,3 +289,14 @@ class OutputContainerWidget extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
