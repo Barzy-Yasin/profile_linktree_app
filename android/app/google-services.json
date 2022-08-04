@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "415360089719",
+    "project_id": "barzy-firestore-crud",
+    "storage_bucket": "barzy-firestore-crud.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415360089719:android:0365e7367ed404aff2d072",
+        "android_client_info": {
+          "package_name": "com.example.profile_linktree_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415360089719-jolohutekcjvknru6jfjdvngekair9eq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7Z_qifJxIYZ5luT3472F4JrOdeZ1JHTE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415360089719-jolohutekcjvknru6jfjdvngekair9eq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "415360089719-vndak9etftbi8mnsae8ujtetsgts9er2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firstInclassAssignment"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
