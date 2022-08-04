@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 class Chat extends StatelessWidget {
    Chat({Key? key}) : super(key: key);
 
+  // ignore: unused_field
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   static const Color primaryColor = Colors.teal;
