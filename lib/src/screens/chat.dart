@@ -2,26 +2,33 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-// ignore: unused_import
 import 'package:url_launcher/url_launcher_string.dart';
 
-class Chat extends StatelessWidget {
-  Chat({Key? key}) : super(key: key);
-
-  // ignore: unused_field
-  final FirebaseFirestore _db = FirebaseFirestore.instance;
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController messageController = TextEditingController();
-  final TextEditingController urlController = TextEditingController();
+class Chat extends StatefulWidget {
+  const Chat({Key? key}) : super(key: key);
 
   static const Color primaryColor = Colors.teal;
+
+  @override
+  State<Chat> createState() => _ChatState();
+}
+
+class _ChatState extends State<Chat> {
+  // ignore: unused_field
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
+
+  final TextEditingController nameController = TextEditingController();
+
+  final TextEditingController messageController = TextEditingController();
+
+  final TextEditingController urlController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: primaryColor,
+          backgroundColor: Chat.primaryColor,
           centerTitle: true,
           title: Text(
             'messages'.toUpperCase(),
@@ -35,41 +42,119 @@ class Chat extends StatelessWidget {
             children: [
               // body section
               Expanded(
-                child: FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
-                  future: getDataOnceUsingFuture(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
-                    } else if (snapshot.hasError) {
-                      return Text(snapshot.error.toString());
-                    } else if (snapshot.data == null) {
-                      return const Text('snapshottt no data');
-                    }
-                    // return Text(snapshot.data.toString());
-                    // return Text(snapshot.data!.docs.toString()); // returns firestore instances
-                    // return Text(snapshot.data!.docs.length.toString()); // returns number of documents inside the collection
+                // /profilelinktree/person/usersmessages/AcnMjy1nU3LKpvSDGZYJ
+                  child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                stream: FirebaseFirestore.instance
+                    .collection('profilelinktree')
+                    .doc('person')
+                    .collection('usersmessages')
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Text("err ${snapshot.error}");
+                  } else if (snapshot.data == null || !snapshot.hasData) {
+                    return const Text('snapshot is empty(StreamBuilder)');
+                  }
 
-                    // snapshot.data!.docs.map((doc) => print (doc.data()));
-                    // return Text(snapshot.data!.docs.length.toString());
-                    // return Text(snapshot.data.toString());
-                    return ListView.builder(
-                      itemCount: snapshot.data!.docs.length,
-                      itemBuilder: (context, index) {
-                        return OutputContainerWidget(
-                          name: snapshot.data!.docs[index].data()["name"],
-                          message: snapshot.data!.docs[index].data()["message"],
-                          url: snapshot.data!.docs[index].data()["url"],
-                          index: "${index + 1}",
-                        );
-                      },
-                    );
-                  },
-                ),
-              ),
+                  // snapshot.data!.docs.first;
+                  print('22222');
+                  print(snapshot.data!.docs.length.toString());
+                  print(snapshot.data);
+
+                  snapshot.data?.docs;
+                  // return Text(snapshot.data!.docs.length.toString());
+                  return ListView.builder(
+                    itemCount: snapshot.data!.docs.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      print('11111');
+
+                      return OutputContainerWidget(
+                        name: snapshot.data!.docs[index].data()["name"],
+                        message: snapshot.data!.docs[index].data()["message"],
+                        url: snapshot.data!.docs[index].data()["url"],
+                        index: "${index + 1}",
+                      );
+                    },
+                  );
+
+                  // return ListView.separated(
+                  //     itemCount: snapshot.data!.docs.length,
+                  //     separatorBuilder: (BuildContext context, int index) {
+                  //       return const Divider();
+                  //     },
+                  //     itemBuilder: (BuildContext context, int index) {
+                  //       return Text("${index+1}:     ");
+                  //       // ${snapshot.data!.docs[index]
+                  //       //     .data()["first_name"]}
+
+                  //     });
+                },
+              )
+                  // child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                  //   // stream: _db.collection('names').snapshots(),
+                  //   stream: _db.collection('collectionPath').doc('person').collection('usersmessages').snapshots(),
+                  //   builder: (context, snapshot) {
+                  //     if (snapshot.connectionState == ConnectionState.waiting) {
+                  //       return const CircularProgressIndicator();
+                  //     } else if (snapshot.hasError) {
+                  //       return Text("err ${snapshot.error}");
+                  //     } else if (snapshot.data == null || !snapshot.hasData) {
+                  //       return const Text('snapshot is empty(StreamBuilder)');
+                  //     }
+
+                  //     // snapshot.data!.docs;
+
+                  //     return ListView.builder(
+                  //       itemCount: snapshot.data!.docs.length,
+                  //       itemBuilder: (context, index) {
+                  //         return OutputContainerWidget(
+                  //           name: snapshot.data!.docs[index].data()["name"],
+                  //           message: snapshot.data!.docs[index].data()["message"],
+                  //           url: snapshot.data!.docs[index].data()["url"],
+                  //           index: "${index + 1}",
+                  //         );
+                  //       },
+                  //     );
+                  //   },
+                  // ),
+
+                  // child: FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                  //   future: getDataOnceUsingFuture(),
+                  //   builder: (context, snapshot) {
+                  //     if (snapshot.connectionState == ConnectionState.waiting) {
+                  //       return const Center(child: CircularProgressIndicator());
+                  //     } else if (snapshot.hasError) {
+                  //       return Text(snapshot.error.toString());
+                  //     } else if (snapshot.data == null) {
+                  //       return const Text('snapshottt no data');
+                  //     }
+                  //     // return Text(snapshot.data.toString());
+                  //     // return Text(snapshot.data!.docs.toString()); // returns firestore instances
+                  //     // return Text(snapshot.data!.docs.length.toString()); // returns number of documents inside the collection
+
+                  //     // snapshot.data!.docs.map((doc) => print (doc.data()));
+                  //     // return Text(snapshot.data!.docs.length.toString());
+                  //     // return Text(snapshot.data.toString());
+                  //     return ListView.builder(
+                  //       itemCount: snapshot.data!.docs.length,
+                  //       itemBuilder: (context, index) {
+                  //         return OutputContainerWidget(
+                  //           name: snapshot.data!.docs[index].data()["name"],
+                  //           message: snapshot.data!.docs[index].data()["message"],
+                  //           url: snapshot.data!.docs[index].data()["url"],
+                  //           index: "${index + 1}",
+                  //         );
+                  //       },
+                  //     );
+                  //   },
+                  // ),
+                  ),
               // inputs section
               const Divider(
                 // color: Colors.black26,
-                color: primaryColor,
+                color: Chat.primaryColor,
                 height: 2,
                 thickness: 1,
               ),
@@ -107,7 +192,7 @@ class Chat extends StatelessWidget {
                               color: Colors.teal.shade50,
                               border: Border.all(
                                 // color: Colors.blue,
-                                color: primaryColor,
+                                color: Chat.primaryColor,
                                 width: 1,
                               ),
                             ),
@@ -126,7 +211,7 @@ class Chat extends StatelessWidget {
                                 'SEND',
                                 style: TextStyle(
                                   fontSize: 20,
-                                  color: primaryColor,
+                                  color: Chat.primaryColor,
                                   letterSpacing: 1,
                                 ),
                               ),
@@ -300,3 +385,58 @@ class OutputContainerWidget extends StatelessWidget {
 
 
 
+
+
+
+/*
+
+StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                  stream: _firebaseFirestore.collection('names').snapshots(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return CircularProgressIndicator();
+                    } else if (snapshot.hasError) {
+                      return Text("err ${snapshot.error}");
+                    } else if (snapshot.data == null || !snapshot.hasData) {
+                      return Text('snapshot is empty(StreamBuilder)');
+                    }
+
+                    snapshot.data!.docs.first;
+
+                    // return 
+                  },
+                ),
+
+*/
+
+
+
+
+/*
+
+StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                  stream: _firebaseFirestore.collection('names').snapshots(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return CircularProgressIndicator();
+                    } else if (snapshot.hasError) {
+                      return Text("err ${snapshot.error}");
+                    } else if (snapshot.data == null || !snapshot.hasData) {
+                      return Text('snapshot is empty(StreamBuilder)');
+                    }
+
+                    snapshot.data!.docs.first;
+
+                    return ListView.separated(
+                        itemCount: snapshot.data!.docs.length,
+                        separatorBuilder: (BuildContext context, int index) {
+                          return Divider();
+                        },
+                        itemBuilder: (BuildContext context, int index) {
+                          return Text("${index+1}: ${snapshot.data!.docs[index]
+                              .data()["first_name"]}");
+                        });
+                  },
+                ),
+
+*/

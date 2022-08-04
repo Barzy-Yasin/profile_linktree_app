@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
       initialRoute: ScreenRoutes.init,
       routes: {
         ScreenRoutes.init: (context) => const Profile(),
-        ScreenRoutes.chat: (context) =>  Chat(),
+        ScreenRoutes.chat: (context) =>  const Chat(),
       },
     );
   }
