@@ -1,7 +1,6 @@
-import 'package:profile_linktree_app/route/screen_routes.dart';
-// import 'package:profile_linktree_app/src/screens/chat.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:profile_linktree_app/src/routes/screen_routes.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class Profile extends StatelessWidget {

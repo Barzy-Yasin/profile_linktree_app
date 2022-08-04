@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:profile_linktree_app/route/screen_routes.dart';
+import 'package:profile_linktree_app/src/routes/screen_routes.dart';
 
 import 'package:profile_linktree_app/src/screens/profile.dart';
 import 'package:profile_linktree_app/src/screens/chat.dart';
