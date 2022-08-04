@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:profile_linktree_app/src/routes/screen_routes.dart';
 
 import 'package:profile_linktree_app/src/screens/profile.dart';
-import 'package:profile_linktree_app/src/screens/chat.dart';
+import 'package:profile_linktree_app/src/screens/chat_directory/chat.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
